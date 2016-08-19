@@ -1,0 +1,23 @@
+{
+  "name": "book-it",
+  "description": "A text editor, but for books",
+  "main": "app.js",
+  "authors": [
+    "LightingTech"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "text-editor",
+    "book-editor",
+    "book-writer"
+  ],
+  "homepage": "https://github.com/arcanite24/book-it",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
