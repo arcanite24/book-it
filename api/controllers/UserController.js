@@ -6,16 +6,53 @@
  */
 
 var jwt = require('jsonwebtoken');
-var SHA256 = require('crypto-js/sha256');
+var bcrypt = require('bcrypt');
 
 module.exports = {
 	register: function (req, res) {
-		var params = req.allParams();
-		var hash_password = SHA256(params.password).toString();
-		return res.json({hola: hash_password});
+		var params = req.param('datos');
+		bcrypt.hash(params.password, 10, function (err, hash) {
+			if (err) {
+				return res.json(500, {err: err, message: 'Error al crear usuario.'});
+			} else {
+				var tempUser = {
+					username: params.username,
+					password: hash,
+					name: params.name,
+					borndate: params.borndate
+				};
+				User.create(tempUser).then(function(data) {
+					console.log(data);
+					return res.json({user: data, message: 'Usuario registrado correctamente.'});
+				}).catch(function(err) {
+					console.log(err);
+				  return res.json(500, {err: err, message: 'Error al crear usuario.'});
+				});
+			}
+		});
 	},
 
 	login: function (req, res) {
-
+		var username = req.param('username');
+		var password = req.param('password');
+		User.findOne({username: username}).then(function(data) {
+		  if (data) {
+				bcrypt.compare(password, data.password, function (err, res) {
+					if (res) {
+						
+					} else if (err) {
+						console.log(err);
+						return res.json(500, {err: err, message: 'Error, las contraseñas no coinciden.'});
+					} else {
+						return res.json(500, {err: err, message: 'Error con el servidor.'});
+					}
+				});
+		  } else {
+				return res.json({err: true, message: 'Usuario no encontrado.'});
+			}
+		}).catch(function(err) {
+			console.log(err);
+		  return res.json(500, {err: err});
+		});
 	}
 };

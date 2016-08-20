@@ -7,18 +7,18 @@
       <div flex="100">
         <md-input-container class="md-block">
           <label>Nombre de usuario</label>
-          <input ng-model="login.username">
+          <input ng-model="logindata.username">
         </md-input-container>
       </div>
       <div flex="100">
         <md-input-container class="md-block">
           <label>Contraseña</label>
-          <input ng-model="login.password">
+          <input ng-model="logindata.password">
         </md-input-container>
       </div>
       <div flex="100" layout>
         <span flex></span>
-        <md-button class="md-raised md-primary" ng-click="login(login)">Iniciar Sesión</md-button>
+        <md-button class="md-raised md-primary" ng-click="login(logindata)">Iniciar Sesión</md-button>
       </div>
       <div flex="100" layout>
         <a ui-sref="lostpassword" class="md-caption" style="cursor:pointer;color:rgb(133, 133, 133)">Olvidé mi contraseña</a>

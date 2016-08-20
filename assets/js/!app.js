@@ -12,4 +12,5 @@ app.config(function ($urlRouterProvider, $stateProvider, $mdThemingProvider) {
   $urlRouterProvider.otherwise('/index');
   $stateProvider
     .state('index', {url: '/index', templateUrl: 'templates/index.html', controller: 'MainCtrl'})
+    .state('register', {url: '/register', templateUrl: 'templates/register.html', controller: 'MainCtrl'})
 });
