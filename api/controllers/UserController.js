@@ -37,12 +37,14 @@ module.exports = {
 		var password = req.param('password');
 		User.findOne({username: username}).then(function(data) {
 		  if (data) {
-				bcrypt.compare(password, data.password, function (err, res) {
-					if (res) {
-						
+				bcrypt.compare(password, data.password, function (err, respuesta_compare) {
+					if (respuesta_compare) {
+						var token = jwt.sign(data, sails.config.seguridad.secretJWT);
+						RealtimeService.publishAction('realtime-bookit', 'user-login', {user: data, ip: req.ip, headers: req.headers});
+						return res.json({token: token, user: data});
 					} else if (err) {
 						console.log(err);
-						return res.json(500, {err: err, message: 'Error, las contraseñas no coinciden.'});
+						return res.json({err: true, message: 'Error, las contraseñas no coinciden.'});
 					} else {
 						return res.json(500, {err: err, message: 'Error con el servidor.'});
 					}

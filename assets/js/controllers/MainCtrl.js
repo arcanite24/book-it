@@ -1,6 +1,31 @@
-app.controller('MainCtrl', function($scope, $state, $back, $help) {
-  $scope.loginUser = function (datos) {
+app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $rootScope) {
 
+  $rootScope.$state = $state;
+
+  if ($rootScope.logeado) {
+    $state.go('dashboard');
+  }
+
+  $scope.loginUser = function (datos) {
+    if (datos.username && datos.password) {
+      $back.login(datos).success(function (data) {
+        if (data.err) {
+          console.log(data.err);
+          $mdToast.show($mdToast.simple().textContent("La contraseña o el nombre de usuario son incorrectas.").hideDelay(2000).parent(angular.element(document.body)));
+        } else if (!data.token) {
+          $mdToast.show($mdToast.simple().textContent("La contraseña o el nombre de usuario son incorrectas.").hideDelay(2000).parent(angular.element(document.body)));
+        } else {
+          console.log('Login Data', data);
+          $rootScope._user = data.user;
+          $rootScope.token = data.token;
+          $rootScope.logeado = true;
+          $mdToast.show($mdToast.simple().textContent("Sesión iniciada correctamente.").hideDelay(2000).parent(angular.element(document.body)));
+          $state.go('dashboard');
+        }
+      }).error(function (err) {
+        $mdToast.show($mdToast.simple().textContent("Error con el servidor al iniciar sesión.").hideDelay(2000));
+      });
+    }
   }
 
   $scope.registerUser = function (datos) {

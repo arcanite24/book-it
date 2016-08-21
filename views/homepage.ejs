@@ -1,3 +1,65 @@
-<div ng-app="BookIt" class="ui-view-container">
-  <div class="well" ui-view></div>
+<div ng-app="BookIt">
+  <div ng-controller="ToolbarCtrl">
+    <md-toolbar class="md-hue-2" ng-hide="$state.current.name == 'index' || $state.current.name == 'register'">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Menu" ng-click="abrirSidenav()">
+          <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+        <h2>
+          <span>Book It</span>
+        </h2>
+        <span flex></span>
+        <md-menu md-position-mode="target-right target" md-offset="0 -10">
+          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-menu-origin md-svg-icon="dots-vertical"></md-icon>
+          </md-button>
+          <md-menu-content width="3">
+            <md-menu-item>
+              <md-button ng-click="rootLogout()">
+                  <div layout="row" flex>
+                    <p flex>Cerrar Sesión</p>
+                    <md-icon md-menu-align-target md-svg-icon="logout" style="margin: auto 3px auto 0;"></md-icon>
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </md-toolbar>
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-whiteframe="4">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Book It</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <md-list>
+          <md-subheader>Proyectos</md-subheader>
+          <md-list-item ui-sref="dashboard" class="noright">
+            <md-icon md-svg-icon="view-dashboard"></md-icon>
+            <p>Dashboard</p>
+          </md-list-item>
+          <md-list-item ui-sref="projects" class="noright">
+            <md-icon md-svg-icon="book"></md-icon>
+            <p>Mis Proyectos</p>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-subheader>Configuración</md-subheader>
+          <md-list-item ui-sref="account" class="noright">
+            <md-icon md-svg-icon="account"></md-icon>
+            <p>Mi Cuenta</p>
+          </md-list-item>
+          <md-list-item ng-click="rootLogout()" class="noright">
+            <md-icon md-svg-icon="logout"></md-icon>
+            <p>Cerrar Sesión</p>
+          </md-list-item>
+        <md-list>
+      </md-content>
+    </md-sidenav>
+  </div>
+  <div class="ui-view-container">
+    <div class="well" ui-view></div>
+  </div>
 </div>
