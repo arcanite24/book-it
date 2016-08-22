@@ -1,7 +1,8 @@
 var app = angular.module('BookIt', [
   'ui.router',
   'ngMaterial',
-  'ngSails'
+  'ngSails',
+  'jkAngularCarousel'
 ]);
 
 app.config(function ($urlRouterProvider, $stateProvider, $mdThemingProvider, $mdIconProvider) {
