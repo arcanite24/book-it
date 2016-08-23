@@ -88,5 +88,14 @@ module.exports.connections = {
   * More adapters: https://github.com/balderdashy/sails                      *
   *                                                                          *
   ***************************************************************************/
+  
+  mongoLab: {
+    adapter: 'sails-mongo',
+    host: 'ds044229.mlab.com',
+    port: '44229',
+    user: 'admin',
+    password: 'admin',
+    database: 'book-it'
+  }
 
 };

@@ -6,7 +6,7 @@ app.factory('$back', function ($sails, $q) {
     },
 
     login: function (datos) {
-      return $sails.post('/api/user/login');
+      return $sails.post('/api/user/login', datos);
     }
 
   };
