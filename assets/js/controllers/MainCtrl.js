@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-app.controller('MainCtrl', function($scope, $state, $back) {
-  $scope.login = function (login) {
-    $back.login(login).success(function(data) {
-      console.log(data);
-=======
 app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $rootScope) {
 
   $rootScope.$state = $state;
@@ -47,7 +41,6 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
     }).error(function (err) {
       console.log(err);
       $help.toast("Error con el servidor, intenta de nuevo.");
->>>>>>> 30e7b7f4811ac45e271f846f0d88c41bb4ff8ab2
     });
   }
 });

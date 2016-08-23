@@ -24,6 +24,24 @@ module.exports = {
     name: {
       type: 'string',
       required: true
+    },
+    edad: {
+      type: 'integer',
+      required: true
+    },
+    pregunta: {
+      type: 'string',
+      required: true
+    },
+    respuesta: {
+      type: 'string',
+      required: true
+    },
+    
+    toJSON: function () {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
     }
   }
 };
