@@ -1,0 +1,21 @@
+<div layout layout-align="center center" layout-padding layout-wrap ng-init="initManageUsers()">
+  <div flex="100">
+    <h4>Gestionar Usuarios</h4>
+  </div>
+  <div flex-sm="100" flex-gt-sm="90" class="md-whiteframe-1dp table-responsive-vertical" ng-if="allUsers || allUsers.length > 0">
+    <table class="table table-hover table-mc-light-blue" at-table at-paginated at-list="allUsers" at-config="allUsersTableConfig">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <td at-implicit at-sortable at-attribute="name" at-title="Nombre"></td>
+          <td at-implicit at-sortable at-attribute="username" at-title="Email"></td>
+          <td at-implicit at-sortable at-attribute="borndate | date" at-title="Nacimiento"></td>
+          <td at-implicit at-sortable at-attribute="edad" at-title="Edad"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div flex="100" class="center-pagination">
+    <at-pagination at-list="allUsers" at-config="allUsersTableConfig"></at-pagination>
+  </div>
+</div>

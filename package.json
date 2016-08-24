@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "angular": "^1.5.8",
     "bcrypt": "^0.8.7",
     "crypto-js": "^3.1.6",
     "ejs": "2.3.4",
@@ -22,6 +23,7 @@
     "grunt-sync": "0.5.2",
     "include-all": "~0.1.6",
     "jsonwebtoken": "^7.1.9",
+    "ng-table": "^1.0.0",
     "rc": "1.0.1",
     "sails": "~0.12.4",
     "sails-disk": "~0.10.9",
