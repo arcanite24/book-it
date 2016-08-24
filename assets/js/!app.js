@@ -19,6 +19,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $mdThemingProvider, $md
     .state('dashboard', {url: '/dashboard', templateUrl: 'templates/dashboard.html', controller: 'DashboardCtrl'})
     
     //Gestion de usuarios
-    .state('manage-users', {url: '/users/admin', templateUrl: 'templates/users/manage.html', controller: 'UsersCtrl'})    
+    .state('manage-users', {url: '/users/admin', templateUrl: 'templates/users/manage.html', controller: 'UsersCtrl'})
+    .state('add-users', {url: '/users/new', templateUrl: 'templates/users/new.html', controller: 'UsersCtrl'})
         
 });
