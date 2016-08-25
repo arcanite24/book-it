@@ -59,5 +59,35 @@ module.exports = {
 			console.log(err);
 		  return res.json(500, {err: err});
 		});
+	},
+	
+	addUser: function (req, res) {
+		var datos = req.param('datos');
+		bcrypt.hash(datos.password, 10, function (err, hash) {
+			if (err) {
+				console.log('ERROR: /user/addUser', err);
+				return res.json({err: err, message: 'Error en /user/addUser'});
+			} else {
+				User.create({
+				username: datos.username,
+				password: hash,
+				name: datos.name,
+				edad: datos.edad,
+				pregunta: datos.pregunta,
+				respuesta: datos.respuesta,
+				borndate: datos.borndate
+			}).then(function (data) {
+				if (data && data.length > 0) {
+					return res.json({user: data[0]});
+				} else {
+					return res.json({user: data});
+				}
+			}).catch(function(err) {
+				console.log('ERROR: /user/addUser', err);
+				return res.json({err: err, message: 'Error en /user/addUser'});
+			});
+			}
+		});
 	}
+	
 };

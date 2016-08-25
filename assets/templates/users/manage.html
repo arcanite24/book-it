@@ -10,7 +10,7 @@
     <table class="table table-hover table-mc-light-blue" at-table at-paginated at-list="allUsers" at-config="allUsersTableConfig">
       <thead></thead>
       <tbody>
-        <tr>
+        <tr ng-click="editUser(item)">
           <td at-implicit at-sortable at-attribute="name" at-title="Nombre"></td>
           <td at-implicit at-sortable at-attribute="username" at-title="Email"></td>
           <td at-implicit at-sortable at-attribute="borndate | date" at-title="Nacimiento"></td>

@@ -13,6 +13,14 @@ app.factory('$back', function ($sails, $q) {
     //Users management
     getAllUsers: function () {
       return $sails.get('/api/user');
+    },
+  
+    addUser: function (datos) {
+      return $sails.post('/api/user/addUser', {datos: datos});
+    },
+    
+    removeUser: function (id) {
+      return $sails.delete('/api/user/'+id);
     }
 
   };
