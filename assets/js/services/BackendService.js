@@ -21,6 +21,10 @@ app.factory('$back', function ($sails, $q) {
     
     removeUser: function (id) {
       return $sails.delete('/api/user/'+id);
+    },
+    
+    editUser: function (id, dataToEdit) {
+      return $sails.put('/api/user/'+id, dataToEdit);
     }
 
   };

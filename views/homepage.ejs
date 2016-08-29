@@ -1,4 +1,7 @@
 <div ng-app="BookIt">
+  <div class="z-loader" ng-show="rootLoader" layout layout-align="center center">
+    <md-progress-circular md-mode="indeterminate" flex="1"></md-progress-circular>
+  </div>
   <div ng-controller="ToolbarCtrl">
     <md-toolbar class="md-hue-2" ng-hide="$state.current.name == 'index' || $state.current.name == 'register'">
       <div class="md-toolbar-tools">
@@ -63,6 +66,10 @@
           <md-list-item ui-sref="manage-projects" class="noright">
             <md-icon md-svg-icon="book-open-page-variant"></md-icon>
             <p>Proyectos</p>
+          </md-list-item>
+          <md-list-item ui-sref="text-editor-test" class="noright">
+            <md-icon md-svg-icon="book-open-page-variant"></md-icon>
+            <p>Editor de Texto Test</p>
           </md-list-item>
         <md-list>
       </md-content>
