@@ -3,11 +3,12 @@
     <form ng-submit="editarUser(registerdata)">
       <div flex="100">
         <h3>Editar Usuario</h3>
+        <md-progress-linear md-mode="indeterminate" ng-show="loader"></md-progress-linear>
       </div>
       <div flex="100" class="login-inputs" layout="row" layout-align="center center" layout-wrap layout-padding>
         <md-input-container class="" flex-gt-sm="33" flex-sm="100">
           <label>Correo Electrónico</label>
-          <input ng-model="registerdata.username" type="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+          <input ng-model="registerdata.username" type="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" disabled>
         </md-input-container>
         <md-input-container class="" flex-gt-sm="33" flex-sm="100">
           <label>Nombre</label>

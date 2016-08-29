@@ -19,8 +19,9 @@ app.controller('UsersCtrl', function ($scope, $back, $help, $state, $rootScope, 
       $help.toast('Las contraseñas no coinciden.');
       return;
     }
+    $rootScope.rootLoader = true;
     $back.addUser(data).then(function (userCreated) {
-      console.log('.then /user/addUser/', userCreated);
+      $rootScope.rootLoader = false;
       if (!userCreated.err) {
         $help.toast('Usuario ' + userCreated.data.user.name + ' agregado.');
         $scope.registerdata = null;
@@ -31,13 +32,33 @@ app.controller('UsersCtrl', function ($scope, $back, $help, $state, $rootScope, 
   }
   
   $scope.editUser = function (user) {
-    $help.modalSimple('/templates/dialogs/edit-user.html', function($scope) {
+    $help.modalSimple('/templates/dialogs/edit-user.html', function($scope, $mdDialog) {
       $scope.registerdata = user;
       $scope.borrarUser = function (id) {
-        console.log('borrarUser', id);
+        $scope.loader = true;
         $back.removeUser(id).then(function(data) {
-          console.log('borrarUser', data.data);
+          $scope.loader = false;
           $help.toast('Usuario eliminado...');
+          $state.reload();
+          $mdDialog.hide();
+        });
+      }
+      
+      $scope.editarUser = function (data) {
+        $rootScope.rootLoader = true;
+        var editUserData = {
+          name: data.name,
+          edad: data.edad,
+          pregunta: data.pregunta,
+          respuesta: data.respuesta
+        };
+        $back.editUser(data.id, editUserData).then(function (thenData) {
+          $rootScope.rootLoader = false;
+          if (thenData.status == 200) {
+            $help.toast('Usuario editado correctamente.');
+          } else {
+            $help.toast('Error editando usuario. Verifica tus datos.');
+          }
         });
       }
     });
