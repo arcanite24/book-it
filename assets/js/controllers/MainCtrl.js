@@ -43,4 +43,19 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
       $help.toast("Error con el servidor, intenta de nuevo.");
     });
   }
+
+  $scope.proyectosRecientes=[
+    {title:'Test 1',
+  text: '12345667'},
+  {title:'Test 2',
+  text: '1234567'},
+  {title: 'Test 3',
+  text: '1234567'},
+  {title: 'Test 4',
+  text: '1234567'},
+  {title: 'Test 5',
+  text: '1234567'},
+  {title: 'Test 6',
+  text: '1234567'}
+  ];
 });
