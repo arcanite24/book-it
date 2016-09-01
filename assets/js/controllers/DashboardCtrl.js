@@ -1,7 +1,7 @@
 app.controller('DashboardCtrl', function($scope, $state) {
 
   $scope.sliderPictures = [
-    // TODO: Agregar que cargue la portada de los 5 proyectos más recientes de la cuenta
+    // TODO: Aqui deben de ir las posibilidades del proyecto, novela, tesis y lo demas
     { src: 'http://placehold.it/720x1280?text=Imágen%20Carousel%201'},
     { src: 'http://placehold.it/720x1280?text=Imágen%20Carousel%202'},
     { src: 'http://placehold.it/720x1280?text=Imágen%20Carousel%203'},
@@ -15,6 +15,6 @@ app.controller('DashboardCtrl', function($scope, $state) {
     {title:'Test 4', text: '1234567'},
     {title:'Test 5', text: '1234567'},
     {title:'Test 6', text: '1234567'}
-  ]
+  ];
 
 });
