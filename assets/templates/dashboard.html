@@ -5,13 +5,9 @@
     </div>
   </div>
 </div>
-<div layout="row" layout-align="start start" layout-padding>
-    <div flex="30">Project 1</div>
-    <div flex="30">project 2</div>
-    <div flex="30">Project 3</div>
+<div layout="row" layout-align="center center">
+  <input type="text" ng-model="buscar">
 </div>
-<div layout="row" layout-align="start start" layout-padding>
-    <div flex="30">Project 4</div>
-    <div flex="30">project 5</div>
-    <div flex="30">Project 6</div>
+<div ng-repeat="proyecto in proyectosRecientes | filter:buscar">
+  <p>{{proyecto.title}}</p>
 </div>
