@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div layout="row" layout-align="center center" layout-padding layout-wrap>
   <div flex="100" class="md-whiteframe-1dp carousel-container margin-dash-card" layout>
     <div flex="100" class="carousel-dashboard">
@@ -12,4 +13,16 @@
   <div flex="33" ng-repeat="proyecto in proyectosRecientes | filter:nombre">
     {{proyecto.title}}---{{proyecto.text}}
   </div>
+=======
+<div layout="row" layout-align="center center">
+  <input type="text" ng-model="busca">
+</div>
+<div layout="row" layout-align="center center" layout-padding layout-margin>
+<div flex="33" ng-repeat="proyecto in proyectosRecientes | filter:busca">
+  <md-card>
+  <md-card-header-text>{{proyecto.title}}</md-card-header-text>
+  <md-card-contentn><h5>{{proyecto.text}}</h5></md-card-content>
+  </md-card>
+</div>
+>>>>>>> ec4ef1c11f944782de1605e6663a00085dfe4a91
 </div>
