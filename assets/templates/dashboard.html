@@ -5,19 +5,11 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
-<div layout="row" layout-align="center center">
-  <input type="text" ng-model="buscar">
-</div>
-<div ng-repeat="proyecto in proyectosRecientes | filter:buscar">
-  <p>{{proyecto.title}}</p>
-=======
 <div layout="row" layout-align="center center" layout-padding>
   <input type="search" ng-model="nombre">
 </div>
 <div layout="row" layout-padding>
-<div flex="33" ng-repeat="proyecto in proyectosRecientes | filter:nombre">
-  {{proyecto.title}}---{{proyecto.text}}
-</div>
->>>>>>> db8032a9100925d37e83a3daa8cf832d153ccee8
+  <div flex="33" ng-repeat="proyecto in proyectosRecientes | filter:nombre">
+    {{proyecto.title}}---{{proyecto.text}}
+  </div>
 </div>
