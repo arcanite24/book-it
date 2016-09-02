@@ -1,23 +1,11 @@
-<div layout="row" layout-align="center center" layout-padding layout-wrap>
-  <div flex="100" class="md-whiteframe-1dp carousel-container margin-dash-card" layout>
-    <div flex="100" class="carousel-dashboard">
-      <jk-carousel data="sliderPictures" item-template-url="'/templates/aux/dashboard-template.html'" max-width=1300 max-height="597" auto-slide="true" auto-slide-time="4000"></jk-carousel>
-    </div>
-  </div>
-</div>
-<<<<<<< HEAD
 <div layout="row" layout-align="center center">
-  <input type="text" ng-model="buscar">
+  <input type="text" ng-model="busca">
 </div>
-<div ng-repeat="proyecto in proyectosRecientes | filter:buscar">
-  <p>{{proyecto.title}}</p>
-=======
-<div layout="row" layout-align="center center" layout-padding>
-  <input type="search" ng-model="nombre">
+<div layout="row" layout-align="center center" layout-padding layout-margin>
+<div flex="33" ng-repeat="proyecto in proyectosRecientes | filter:busca">
+  <md-card>
+  <md-card-header-text>{{proyecto.title}}</md-card-header-text>
+  <md-card-contentn><h5>{{proyecto.text}}</h5></md-card-content>
+  </md-card>
 </div>
-<div layout="row" layout-padding>
-<div flex="33" ng-repeat="proyecto in proyectosRecientes | filter:nombre">
-  {{proyecto.title}}---{{proyecto.text}}
-</div>
->>>>>>> db8032a9100925d37e83a3daa8cf832d153ccee8
 </div>
