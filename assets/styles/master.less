@@ -3,6 +3,9 @@
   width: 2px;
 }
 
+//Colors
+@md-green: rgb(46, 125, 50);
+
 /* Login Container */
 .login-container {
   height: 100vh;
@@ -153,4 +156,46 @@
   position: absolute;
   text-align: center;
   width: 100%;
+}
+
+//Dashboard background
+.background-dashboard {
+  height: 220px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background-color: @md-green;
+}
+
+.recent-dashboard {
+  z-index: 1000;
+  padding: 0;
+  margin: 1em;
+  h4 {
+    padding-left: 1em;
+  }
+}
+
+.z1000 {
+  z-index: 1000;
+}
+
+.recent-text {
+  color: white;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.recent-img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.white-button-color {
+  * {
+    color: white;
+  }
 }

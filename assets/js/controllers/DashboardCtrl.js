@@ -9,12 +9,11 @@ app.controller('DashboardCtrl', function($scope, $state) {
   ];
 
   $scope.proyectosRecientes=[
-    {title:'Test 1', text: '1234567'},
-    {title:'Test 2', text: '1234567'},
-    {title:'Test 3', text: '1234567'},
-    {title:'Test 4', text: '1234567'},
-    {title:'Test 5', text: '1234567'},
-    {title:'Test 6', text: '1234567'}
+    {title:'Test 1', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
+    {title:'Test 2', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
+    {title:'Test 3', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
+    {title:'Test 4', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
+    {title:'Test 5', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'}
   ];
 
 });
