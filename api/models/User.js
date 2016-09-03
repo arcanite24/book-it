@@ -38,6 +38,26 @@ module.exports = {
       required: true
     },
     
+    novelas: {
+      collection: 'novela',
+      via: 'owner'
+    },
+    
+    cuentos: {
+      collection: 'cuento',
+      via: 'owner'
+    },
+    
+    poemas: {
+      collection: 'poema',
+      via: 'owner'
+    },
+    
+    guiones: {
+      collection: 'guion',
+      via: 'owner'
+    },
+    
     toJSON: function () {
       var obj = this.toObject();
       delete obj.password;

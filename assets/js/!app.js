@@ -17,6 +17,7 @@ app.config(function ($urlRouterProvider, $stateProvider, $mdThemingProvider, $md
   $stateProvider
     .state('index', {url: '/index', templateUrl: 'templates/index.html', controller: 'MainCtrl'})
     .state('register', {url: '/register', templateUrl: 'templates/register.html', controller: 'MainCtrl'})
+    .state('lostpassword', {url: '/recover', templateUrl: 'templates/lostpassword.html', controller: 'MainCtrl'})
     .state('dashboard', {url: '/dashboard', templateUrl: 'templates/dashboard.html', controller: 'DashboardCtrl'})
 
     //Gestion de usuarios
