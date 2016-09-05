@@ -6,6 +6,7 @@
  */
 
 var jwt = require('jsonwebtoken');
+var uuid = require("uuid");
 var bcrypt = require('bcrypt');
 
 module.exports = {
@@ -88,6 +89,12 @@ module.exports = {
 			});
 			}
 		});
+	},
+	
+	sendRecoverToken: function (req, res) {
+		var email = req.param('email');
+		var token = uuid.v4();
+		EmailService.sendRecoverTokenMail(email, token);
 	}
 	
 };

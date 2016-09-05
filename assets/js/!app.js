@@ -4,14 +4,15 @@ var app = angular.module('BookIt', [
   'ngSails',
   'ngCkeditor',
   'jkAngularCarousel',
-  'angular-table'
+  'angular-table',
+  'lfNgMdFileInput'
 ]);
 
 app.config(function ($urlRouterProvider, $stateProvider, $mdThemingProvider, $mdIconProvider) {
   $mdIconProvider.defaultIconSet('/svg/mdi.svg');
   $mdThemingProvider.theme('default')
-    .primaryPalette('green')
-    .accentPalette('orange');
+    .primaryPalette('blue-grey')
+    .accentPalette('grey');
 
   $urlRouterProvider.otherwise('/index');
   $stateProvider
