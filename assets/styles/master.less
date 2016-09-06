@@ -9,6 +9,32 @@
 @md-lightblue: rgb(2,119,189);
 @md-bluegrey: rgb(55,71,79);
 
+//Helpers
+.margin1emTop {
+  margin-top: 1em;
+}
+
+.md-badge {
+  text-align: center;
+  min-width: 1em;
+  max-width: 1em;
+  color: white;
+  padding: 0.5em;
+  border-radius: 4px;
+  margin-right: 1em;
+  font-size: small;
+}
+
+.bg-green {
+  background-color: @clr-green;
+}
+.bg-red {
+  background-color: @clr-red;
+}
+.bg-orange {
+  background-color: @clr-orange;
+}
+
 /* Login Container */
 .login-container {
   height: 100vh;
@@ -112,12 +138,12 @@
 }
 
 .pagination li.active {
-  background-color: @clr-orange;
+  background-color: @md-bluegrey;
 }
 
 .pagination li.disabled a {
   cursor: default;
-  color: @clr-deep-orange;
+  color: @md-bluegrey;
 }
 
 .pagination li i {

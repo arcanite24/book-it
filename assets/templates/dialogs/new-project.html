@@ -1,0 +1,46 @@
+<div layout layout-padding>
+  <div flex="100">
+    <form ng-submit="newProject(newprojectData)">
+      <div flex="100">
+        <h3>Nuevo Proyecto</h3>
+        <md-progress-linear md-mode="indeterminate" ng-show="loader"></md-progress-linear>
+      </div>
+      <div flex="100" class="login-inputs" layout="row" layout-align="center center" layout-wrap layout-padding>
+        <md-input-container class="" flex-gt-sm="100" flex-sm="100">
+          <label>Nombre</label>
+          <input ng-model="newprojectData.name" type="text">
+        </md-input-container>
+        <md-input-container class="" flex-gt-sm="100" flex-sm="100">
+          <label>Tipo</label>
+          <md-select ng-model="newprojectData.projectType" ng-init="newprojectData.projectType = 1">
+            <md-option ng-value="1">
+              Novela
+            </md-option>
+            <md-option ng-value="2">
+              Cuento
+            </md-option>
+            <md-option ng-value="3">
+              Guión
+            </md-option>
+            <md-option ng-value="4">
+              Poema
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container flex-gt-sm="100" flex-sm="100" class="md-block">
+          <label>Descripción</label>
+          <textarea ng-model="newprojectData.description" rows="3" md-select-on-focus></textarea>
+        </md-input-container>
+        <div flex-gt-sm="100" flex-sm="100">
+          <label>Portada</label>
+          <lf-ng-md-file-input lf-files="newprojectData.cover" lf-browse-label="Buscar" lf-remove-label="Quitar"></lf-ng-md-file-input>
+        </div>
+        <div flex-gt-sm="100" flex-sm="100" layout>
+          <span flex></span>
+          <md-button class="md-raised md-primary" type="submit">Crear</md-button>
+          <md-button class="md-raised md-danger" ng-click="close()">Cerrar</md-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

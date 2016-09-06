@@ -1,0 +1,63 @@
+<div layout="row" layout-align="center start" layout-padding layout-wrap>
+  <div flex="75" layout layout-wrap>
+    <div flex="25" ng-repeat="proj in proyectosRecientes">
+      <md-card>
+        <img ng-src="{{proj.img}}" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{proj.title | limitTo:15}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>{{proj.text}}</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="start center">
+          <md-button>Abrir</md-button>
+          <md-button>Eliminar</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
+  <div flex="25" class="margin1emTop" layout="row" layout-wrap>
+    <div flex="100" class="md-whiteframe-1dp">
+      <md-list>
+        <md-subheader class="md-no-sticky">Acciones</md-subheader>
+        <md-divider ></md-divider>
+        <md-list-item class="md-2-line" ng-click="modalNewProject()">
+          <md-icon md-svg-icon="book-open" class="md-avatar"></md-icon>
+          <div class="md-list-item-text">
+            <h3>Nuevo Proyecto</h3>
+            <p>Iniciar un nuevo proyecto</p>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item class="md-2-line">
+          <md-icon md-svg-icon="camera-switch" class="md-avatar"></md-icon>
+          <div class="md-list-item-text">
+            <h3>Estádisticas de proyectos</h3>
+            <p>Métricas de proyectos activos</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
+    <div flex="100" class="md-whiteframe-1dp margin1emTop">
+      <md-list>
+        <md-subheader class="md-no-sticky">Estadísticas</md-subheader>
+        <md-divider ></md-divider>
+        <md-list-item>
+          <span class="md-badge bg-green">12</span>
+          <p>Activos</p>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item>
+          <span class="md-badge bg-red">42</span>
+          <p>Finalizados</p>
+        </md-list-item><md-divider ></md-divider>
+        <md-list-item>
+          <span class="md-badge bg-orange">2</span>
+          <p>Por publicar</p>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+</div>
