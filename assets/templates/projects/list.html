@@ -1,15 +1,15 @@
 <div layout="row" layout-align="center start" layout-padding layout-wrap>
-  <div flex="75" layout layout-wrap>
-    <div flex="25" ng-repeat="proj in proyectosRecientes">
+  <div flex="75" layout layout-wrap layout-align="center center" ng-init="loadProjects(_user.id)">
+    <div flex-xs="100" flex-sm="40" flex-md="30" flex-gt-md="25" ng-repeat="proj in proyectosRecientes | orderBy:createdAt:true">
       <md-card>
-        <img ng-src="{{proj.img}}" class="md-card-image" alt="Washed Out">
+        <img ng-src="{{proj.coverUrl}}" class="md-card-image" alt="{{proj.name}}" style="max-height: 240px; min-height: 240px;">
         <md-card-title>
           <md-card-title-text class="project-card-title">
-            <span class="md-headline">{{proj.title | limitTo:15}}</span>
+            <span class="md-headline">{{proj.name | limitTo:15}}</span>
           </md-card-title-text>
         </md-card-title>
-        <md-card-content>
-          <p>{{proj.text}}</p>
+        <md-card-content style="max-height: 100px;">
+          <p>{{proj.description | limitTo:24}}</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="start center">
           <md-button>Abrir</md-button>
@@ -45,16 +45,16 @@
         <md-subheader class="md-no-sticky">Estadísticas</md-subheader>
         <md-divider ></md-divider>
         <md-list-item>
-          <span class="md-badge bg-green">12</span>
+          <span class="md-badge bg-green">{{getEstadistica(proyectosRecientes, 1)}}</span>
           <p>Activos</p>
         </md-list-item>
         <md-divider ></md-divider>
         <md-list-item>
-          <span class="md-badge bg-red">42</span>
+          <span class="md-badge bg-red">{{getEstadistica(proyectosRecientes, 2)}}</span>
           <p>Finalizados</p>
         </md-list-item><md-divider ></md-divider>
         <md-list-item>
-          <span class="md-badge bg-orange">2</span>
+          <span class="md-badge bg-orange">{{getEstadistica(proyectosRecientes, 3)}}</span>
           <p>Por publicar</p>
         </md-list-item>
       </md-list>

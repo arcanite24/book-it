@@ -1,4 +1,22 @@
-app.controller('DashboardCtrl', function($scope, $state) {
+app.controller('DashboardCtrl', function($scope, $state, $http, $q, $rootScope) {
+  
+  $scope.loadDashboardProjects = function (id) {
+    $rootScope.rootLoader = true;
+    var qProjects = [
+      $http.get('/api/novela/getByUser/'+id),
+      $http.get('/api/cuento/getByUser/'+id),
+      $http.get('/api/guion/getByUser/'+id),
+      $http.get('/api/poema/getByUser/'+id)
+    ];
+    
+    $q.all(qProjects).then(function (dataQ) {
+      $scope.proyectosRecientes = [];
+      dataQ.forEach(function(project) {
+        $scope.proyectosRecientes = $scope.proyectosRecientes.concat(project.data);
+      });
+      $rootScope.rootLoader = false;
+    });
+  }
 
   $scope.sliderPictures = [
     // TODO: Aqui deben de ir las posibilidades del proyecto, novela, tesis y lo demas
@@ -6,14 +24,6 @@ app.controller('DashboardCtrl', function($scope, $state) {
     { src: 'http://placehold.it/720x1280?text=Imágen%20Carousel%202'},
     { src: 'http://placehold.it/720x1280?text=Imágen%20Carousel%203'},
     { src: 'http://placehold.it/720x1280?text=Imágen%20Carousel%204'}
-  ];
-
-  $scope.proyectosRecientes=[
-    {title:'Test 1', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
-    {title:'Test 2', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
-    {title:'Test 3', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
-    {title:'Test 4', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'},
-    {title:'Test 5', text: '1234567', img: 'https://placeholdit.imgix.net/~text?txtsize=14&txt=144%C3%97256&w=72&h=108'}
   ];
 
 });

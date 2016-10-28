@@ -5,20 +5,31 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
   if ($rootScope.logeado) {
     $state.go('dashboard');
   }
-
+  
+  if (!$rootScope._user) {
+    if (localStorage.getItem('user')) {
+      $rootScope._user = JSON.parse(localStorage.getItem('user'));
+      $rootScope.token = localStorage.getItem('token');
+      $rootScope.logeado = true;
+      $state.go('dashboard');
+    } else {
+      $state.go('index');
+    }
+  }
+  
   $scope.loginUser = function (datos) {
     if (datos.username && datos.password) {
       $back.login(datos).success(function (data) {
         if (data.err) {
-          console.log(data.err);
           $mdToast.show($mdToast.simple().textContent("La contraseña o el nombre de usuario son incorrectas.").hideDelay(2000).parent(angular.element(document.body)));
         } else if (!data.token) {
           $mdToast.show($mdToast.simple().textContent("La contraseña o el nombre de usuario son incorrectas.").hideDelay(2000).parent(angular.element(document.body)));
         } else {
-          console.log('Login Data', data);
           $rootScope._user = data.user;
           $rootScope.token = data.token;
           $rootScope.logeado = true;
+          localStorage.setItem('user', JSON.stringify($rootScope._user));
+          localStorage.setItem('token', $rootScope.token);
           $mdToast.show($mdToast.simple().textContent("Sesión iniciada correctamente.").hideDelay(2000).parent(angular.element(document.body)));
           $state.go('dashboard');
         }
@@ -68,5 +79,7 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
     title: 'test6',
     text: '0987456'
   }];
+  
+  /*scope.wea*/
   
 });

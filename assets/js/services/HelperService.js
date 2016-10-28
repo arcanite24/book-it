@@ -1,11 +1,8 @@
-app.factory('$help', function ($mdToast, $mdDialog) {
+app.factory('$help', function (toastr, $mdDialog) {
   return {
+    
     toast: function (text) {
-      var tempToast = $mdToast.simple()
-      .content(text)
-      .hideDelay(2000)
-      .parent(angular.element(document.body));
-      $mdToast.show(tempToast);
+      toastr.success(text, 'INFO');
     },
     
     modalSimple: function(template, controller) {

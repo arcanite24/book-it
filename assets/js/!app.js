@@ -5,7 +5,9 @@ var app = angular.module('BookIt', [
   'ngCkeditor',
   'jkAngularCarousel',
   'angular-table',
-  'lfNgMdFileInput'
+  'lfNgMdFileInput',
+  'ngAnimate',
+  'toastr'
 ]);
 
 app.config(function ($urlRouterProvider, $stateProvider, $mdThemingProvider, $mdIconProvider) {

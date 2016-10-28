@@ -27,6 +27,17 @@
             </md-option>
           </md-select>
         </md-input-container>
+        <md-input-container class="" flex-gt-sm="100" flex-sm="100" ng-show="newprojectData.projectType == 2">
+          <label>Tipo de <strong>cuento</strong></label>
+          <md-select ng-model="newprojectData.tipoCuento" ng-init="newprojectData.tipoCuento = 'clasico'">
+            <md-option ng-value="'clasico'">
+              Clásico
+            </md-option>
+            <md-option ng-value="'contemporaneo'">
+              Contemporáneo
+            </md-option>
+          </md-select>
+        </md-input-container>
         <md-input-container flex-gt-sm="100" flex-sm="100" class="md-block">
           <label>Descripción</label>
           <textarea ng-model="newprojectData.description" rows="3" md-select-on-focus></textarea>
@@ -37,8 +48,8 @@
         </div>
         <div flex-gt-sm="100" flex-sm="100" layout>
           <span flex></span>
-          <md-button class="md-raised md-primary" type="submit">Crear</md-button>
-          <md-button class="md-raised md-danger" ng-click="close()">Cerrar</md-button>
+          <md-button class="md-raised md-primary" type="submit" ng-disabled="rootLoader">Crear</md-button>
+          <md-button class="md-raised md-danger" ng-click="close()" ng-disabled="rootLoader">Cerrar</md-button>
         </div>
       </div>
     </form>

@@ -7,7 +7,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "bcrypt": "^0.8.7",
-    "cloudinary": "^1.4.1",
+    "cloudinary": "^1.4.3",
     "crypto-js": "^3.1.6",
     "ejs": "2.3.4",
     "grunt": "1.0.1",
