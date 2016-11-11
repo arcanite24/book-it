@@ -1,0 +1,15 @@
+<div layout="row" layout-align="center start" layout-padding layout-wrap ng-init="loadCuento()">
+  <div flex="100" layout>
+    <h4>Editar Cuento</h4>
+    <span flex></span>
+    <md-button class="md-raised md-warn" ng-click="returnToCuentoIndex(cuento.id)">Regresar</md-button>
+    <md-button class="md-raised md-primary" ng-click="updateCuento(cuento)">Guardar</md-button>
+  </div>
+  <md-input-container flex="100">
+    <label>Nombre del proyecto</label>
+    <input ng-model="cuento.name">
+  </md-input-container>
+  <div flex="100">
+    <textarea ckeditor="editorOptions" ng-model="cuento.text"></textarea>
+  </div>
+</div>

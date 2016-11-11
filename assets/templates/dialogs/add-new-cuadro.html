@@ -1,0 +1,26 @@
+<div layout layout-padding>
+  <div flex="100" ng-init="loadEscenasGuion()">
+    <form ng-submit="addNewCuadro(guion.id, selectedChapterId, sceneName)">
+      <div flex="100">
+        <h3>Agregar nuevo cuadro</h3>
+        <md-progress-linear md-mode="indeterminate" ng-show="loader"></md-progress-linear>
+      </div>
+      <div flex="100" class="login-inputs" layout="row" layout-align="center center" layout-wrap layout-padding>
+        <md-input-container flex="100">
+          <label>Nombre</label>
+          <input ng-model="sceneName" type="text">
+        </md-input-container>
+        <md-input-container flex="100">
+          <md-select ng-model="selectedChapterId" placeholder="Selecciona una escena">
+            <md-option ng-value="cap.id" ng-repeat="cap in scenesNewCuadro">{{ cap.name }}</md-option>
+          </md-select>
+        </md-input-container>
+        <div flex-gt-sm="100" flex-sm="100" layout>
+          <span flex></span>
+          <md-button class="md-raised md-primary" type="submit" ng-disabled="rootLoader">Añadir</md-button>
+          <md-button class="md-raised md-warn" ng-click="closeModal()" ng-disabled="rootLoader">Cerrar</md-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

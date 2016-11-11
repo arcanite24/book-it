@@ -7,6 +7,9 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
   }
   
   if (!$rootScope._user) {
+    if ($state.current.name == 'register' || $state.current.name == 'lostpassword') {
+      return;
+    }
     if (localStorage.getItem('user')) {
       $rootScope._user = JSON.parse(localStorage.getItem('user'));
       $rootScope.token = localStorage.getItem('token');
@@ -15,6 +18,23 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
     } else {
       $state.go('index');
     }
+  }
+  
+  $scope.registerUser = function (datos) {
+    console.log('wea')
+    if (datos.password != datos.repassword) {
+      $help.toast('Las contraseñas no coinciden.');
+      return;
+    }
+    $back.register(datos).success(function(data) {
+      if (!data.error) {
+        $help.toast("Usuario registrado correctamente. Ahora puedes iniciar sesión.");
+        $state.go('index');
+      }
+    }).error(function (err) {
+      console.log(err);
+      $help.toast("Error con el servidor, intenta de nuevo.");
+    });
   }
   
   $scope.loginUser = function (datos) {
@@ -38,48 +58,5 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
       });
     }
   }
-
-  $scope.registerUser = function (datos) {
-    if (datos.password != datos.repassword) {
-      $help.toast('Las contraseñas no coinciden.');
-      return;
-    }
-    $back.register(datos).success(function(data) {
-      if (!data.error) {
-        $help.toast("Usuario registrado correctamente. Ahora puedes iniciar sesión.");
-        $state.go('index');
-      }
-    }).error(function (err) {
-      console.log(err);
-      $help.toast("Error con el servidor, intenta de nuevo.");
-    });
-  }
-  
-  $scope.proyectosRecientes = [{
-    title: 'test1',
-    text: '123123'
-  },
-  {
-    title: 'test2',
-    text: '126435'
-  },
-  {
-    title: 'test3',
-    text: '987689'
-  },
-  {
-    title: 'test4',
-    text: '768943'
-  },
-  {
-    title: 'test5',
-    text: '098754'
-  },
-  {
-    title: 'test6',
-    text: '0987456'
-  }];
-  
-  /*scope.wea*/
   
 });

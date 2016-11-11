@@ -21,6 +21,7 @@ app.controller('UsersCtrl', function ($scope, $back, $help, $state, $rootScope, 
     }
     $rootScope.rootLoader = true;
     $back.addUser(data).then(function (userCreated) {
+      console.log(userCreated)
       $rootScope.rootLoader = false;
       if (!userCreated.err) {
         $help.toast('Usuario ' + userCreated.data.user.name + ' agregado.');

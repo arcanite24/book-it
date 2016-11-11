@@ -1,25 +1,25 @@
 <div layout="row" layout-align="center start" layout-padding layout-wrap>
-  <div flex="75" layout layout-wrap layout-align="center center" ng-init="loadProjects(_user.id)">
+  <div flex-xs="100" flex-order-xs="1" flex-sm="100" flex-order-sm="1" flex-gt-sm="70" layout layout-wrap layout-align="center center" ng-init="loadProjects(_user.id)">
     <div flex-xs="100" flex-sm="40" flex-md="30" flex-gt-md="25" ng-repeat="proj in proyectosRecientes | orderBy:createdAt:true">
       <md-card>
-        <img ng-src="{{proj.coverUrl}}" class="md-card-image" alt="{{proj.name}}" style="max-height: 240px; min-height: 240px;">
+        <img ng-src="{{proj.coverUrl}}" class="md-card-image" alt="{{proj.name}}" style="max-height: 300px; min-height: 300px;">
         <md-card-title>
           <md-card-title-text class="project-card-title">
-            <span class="md-headline">{{proj.name | limitTo:15}}</span>
+            <span class="md-headline puntitos-texto">{{proj.name | limitTo:15}}</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content style="max-height: 100px;">
-          <p>{{proj.description | limitTo:24}}</p>
+          <p class="puntitos-texto">{{proj.description | limitTo:24}}</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="start center">
-          <md-button>Abrir</md-button>
-          <md-button>Eliminar</md-button>
+          <md-button ng-click="openProject(proj.id, proj.projectType)">Abrir</md-button>
+          <md-button ng-click="openDeleteProject(proj)">Eliminar</md-button>
         </md-card-actions>
       </md-card>
     </div>
   </div>
-  <div flex="25" class="margin1emTop" layout="row" layout-wrap>
-    <div flex="100" class="md-whiteframe-1dp">
+  <div flex-xs="100" flex-order-xs="-1" flex-sm="100" flex-order-sm="-1" flex-gt-sm="25" layout="row" layout-wrap layout-margin layout-align="center center">
+    <div flex-xs="100" flex-sm="45" flex-gt-sm="100" class="md-whiteframe-1dp">
       <md-list>
         <md-subheader class="md-no-sticky">Acciones</md-subheader>
         <md-divider ></md-divider>
@@ -40,7 +40,7 @@
         </md-list-item>
       </md-list>
     </div>
-    <div flex="100" class="md-whiteframe-1dp margin1emTop">
+    <div flex-xs="100" flex-sm="45" flex-gt-sm="100" class="md-whiteframe-1dp margin1emTop">
       <md-list>
         <md-subheader class="md-no-sticky">Estadísticas</md-subheader>
         <md-divider ></md-divider>

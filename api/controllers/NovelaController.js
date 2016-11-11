@@ -15,6 +15,16 @@ module.exports = {
 	    console.log('ERROR: ', err)
 	    return res.json(500, {err: true});
 	  });
+	},
+	
+	getChapterScenes: function (req, res) {
+		var id = req.param('id');
+		NovelaCapitulo.findOne({id: id}).populateAll().then(function (data) {
+			return res.json(data.scenes);
+		}).catch(function(err) {
+			console.log(err);
+			return res.json([]);
+		});
 	}
 	
 };

@@ -1,0 +1,95 @@
+<div layout="row" layout-align="center start" layout-padding layout-wrap ng-init="loadCuento()">
+  <div flex-xs="100" flex-order-xs="1" flex-sm="100" flex-order-sm="1" flex-gt-sm="70">
+    <div layout="row" layout-wrap layout-padding>
+      <!-- Cuento
+            | Capitulo 1
+              | Escena 1
+              | Escena 2
+            | Capitulo 2
+              | Escena A
+              | Escena B
+      -->
+      <div flex="100" layout layout-wrap layout-padding>
+        <div class="tree-element tree-project-name animated fadeInDown" ng-click="openEditCuento(cuento.id)" flex>
+          <!-- Cuento -->
+          <h4>{{cuento.name}}</h4>
+        </div>
+        <span flex="60"></span>
+        
+        <!-- Childe #1 | Capitlos -->
+        <div flex="100" ng-repeat="cap in cuento.acts | orderBy:createdAt:true" ng-init="loadActScenes(cap.id)" layout layout-wrap layout-padding>
+          <div flex="10" class="tree-separator-orange"></div>
+          <div class="tree-element tree-child1-orange animated fadeInLeft" ng-click="openEditChapter(cap.id)" flex>
+            <h4>{{cap.name}}</h4>
+          </div>
+          <span flex="50"></span>
+          
+          <!-- Childe #2 | Escenas -->
+          <div flex="100" ng-repeat="scene in cap.scenes" ng-init="loadCuadros(scene.id, $index)" layout layout-padding layout-wrap>
+            <div flex="20" class="tree-separator-green"></div>
+            <div class="tree-element tree-child2-green animated fadeInRight" ng-click="openEditScene(scene.id)" flex>
+              <h4>{{scene.name}}</h4>
+            </div>
+            <span flex="40"></span>
+            
+            <!-- Childe #3 | Cuadros -->
+            <div flex="100" ng-repeat="cuadro in scene.cuadros" layout layout-padding>
+              <div flex="30" class="tree-separator-red"></div>
+              <div class="tree-element tree-child2-red animated fadeInRight" ng-click="openEditScene(scene.id)" flex>
+                <h4>{{cuadro.name}}</h4>
+              </div>
+              <span flex="30"></span>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+  <div flex-xs="100" flex-order-xs="-1" flex-sm="100" flex-order-sm="-1" flex-gt-sm="25" layout="row" layout-wrap layout-margin layout-align="center center">
+    <div flex-xs="100" flex-sm="45" flex-gt-sm="100" class="md-whiteframe-1dp">
+      <md-list>
+        <md-subheader class="md-no-sticky">Información</md-subheader>
+        <md-divider ></md-divider>
+        <md-list-item>
+          <strong>Nombre:&nbsp;</strong> {{cuento.name}}
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item>
+          <strong>Creado por:&nbsp;</strong> {{cuento.owner.name}}
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item>
+          <strong>Fecha de creación:&nbsp;</strong> {{cuento.createdAt | date}}
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item>
+          <strong>Última edición:&nbsp;</strong> {{cuento.updatedAt | date}}
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item>
+          <strong>Estado:&nbsp;</strong>
+          <span style="color: #4CAF50" ng-show="cuento.estado == 'STATE_ACTIVO'">Activo</span>
+          <span style="color: #F44336" ng-show="cuento.estado == 'STATE_FINALIZADO'">Finalizado</span>
+          <span style="color: #FF9800" ng-show="cuento.estado == 'STATE_PUBLICAR'">Por Publicar</span>
+        </md-list-item>
+      </md-list>
+    </div>
+    <div flex-xs="100" flex-sm="45" flex-gt-sm="100" class="md-whiteframe-1dp">
+      <md-list>
+        <md-subheader class="md-no-sticky">Controles</md-subheader>
+        <md-divider ></md-divider>
+        <md-list-item class="md-2-line" ng-click="openChangeState()">
+          <md-icon md-svg-icon="clipboard-text" class="md-avatar"></md-icon>
+          <div class="md-list-item-text">
+            <h3>Cambiar de estado</h3>
+            <p>Modifica el estado del proyecto</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+</div>

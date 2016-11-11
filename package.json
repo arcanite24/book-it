@@ -25,6 +25,8 @@
     "include-all": "~0.1.6",
     "jsonwebtoken": "^7.1.9",
     "ng-table": "^1.0.0",
+    "nodemailer": "^2.6.4",
+    "q": "^1.4.1",
     "rc": "1.0.1",
     "sails": "~0.12.4",
     "sails-disk": "~0.10.9",

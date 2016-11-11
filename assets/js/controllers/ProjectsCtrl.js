@@ -1,4 +1,4 @@
-app.controller('ProjectsCtrl', function($scope, $state, $help, $http, $rootScope, $q) {
+app.controller('ProjectsCtrl', function($scope, $state, $help, $http, $rootScope, $q, toastr) {
 
   $scope.loadProjects = function (id) {
     $rootScope.rootLoader = true;
@@ -16,6 +16,29 @@ app.controller('ProjectsCtrl', function($scope, $state, $help, $http, $rootScope
       });
       $rootScope.rootLoader = false;
     });
+  }
+  
+  $scope.openProject = function (id, type) {
+     switch (type) {
+       case 1:
+         $state.go('novela-detail', {id: id});
+         break;
+         
+      case 2: 
+        $state.go('cuento-detail', {id: id});
+        break;
+        
+      case 3: 
+        $state.go('guion-detail', {id: id});
+        break;
+      
+      case 4: 
+        $state.go('poema-detail', {id: id});
+        break;
+       
+       default:
+         toastr.error('Tipo de proyecto no encontrado.', '!Error!');
+     }
   }
   
   $scope.getEstadistica = function (data, type) {
@@ -163,6 +186,80 @@ app.controller('ProjectsCtrl', function($scope, $state, $help, $http, $rootScope
           $mdDialog.hide();
           toastr.error('Error subiendo imágen...', '¡Error!');
         });
+      }
+    });
+  }
+  
+  $scope.openDeleteProject = function (proj) {
+    $help.modalSimple('templates/dialogs/delete-project.html', function ($scope, $mdDialog, $state, $http, $rootScope, toastr) {
+      $scope.project = proj;
+      $scope.cancelarDelete = function () {
+        $mdDialog.hide();
+      }
+      $scope.borrarProject = function (id, type) {
+        $rootScope.rootLoader = true;
+        switch (type) {
+            case 1:
+              $http.delete('/api/novela/'+id).then(function(dataCreateNovela) {
+                toastr.success('Proyecto eliminado correctamente.', '¡Exito!');
+                $mdDialog.hide();
+                $rootScope.rootLoader = false;
+                $state.reload();
+              }).catch(function(err) {
+                console.log(err);
+                $mdDialog.hide();
+                toastr.error('Error eliminando proyecto...', '¡Error!');
+                $rootScope.rootLoader = false;
+              });
+              break;
+            
+            case 2:
+              $http.delete('/api/cuento/'+id).then(function(dataCreateNovela) {
+                toastr.success('Proyecto eliminado correctamente.', '¡Exito!');
+                $mdDialog.hide();
+                $rootScope.rootLoader = false;
+                $state.reload();
+              }).catch(function(err) {
+                console.log(err);
+                $mdDialog.hide();
+                toastr.error('Error eliminando proyecto...', '¡Error!');
+                $rootScope.rootLoader = false;
+              });
+              break;
+              
+            case 3:
+              $http.delete('/api/guion/'+id).then(function(dataCreateNovela) {
+                toastr.success('Proyecto eliminado correctamente.', '¡Exito!');
+                $mdDialog.hide();
+                $rootScope.rootLoader = false;
+                $state.reload();
+              }).catch(function(err) {
+                console.log(err);
+                $mdDialog.hide();
+                toastr.error('Error eliminando proyecto...', '¡Error!');
+                $rootScope.rootLoader = false;
+              });
+              break;
+              
+            case 4:
+              $http.delete('/api/poema/'+id).then(function(dataCreateNovela) {
+                toastr.success('Proyecto eliminado correctamente.', '¡Exito!');
+                $mdDialog.hide();
+                $rootScope.rootLoader = false;
+                $state.reload();
+              }).catch(function(err) {
+                console.log(err);
+                $mdDialog.hide();
+                toastr.error('Error eliminando proyecto...', '¡Error!');
+                $rootScope.rootLoader = false;
+              });
+              break;
+              
+            default:
+              $mdDialog.hide();
+              toastr.error('Error al eliminar proyecto...', '¡Error!');
+              $rootScope.rootLoader = false;
+          }
       }
     });
   }

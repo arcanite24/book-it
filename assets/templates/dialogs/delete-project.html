@@ -1,0 +1,9 @@
+<div layout="row" layout-padding layout-wrap layout-aling="center center">
+  <div flex="100">
+    <h4>¿Estás seguro de eliminar el proyecto "<em>{{project.name}}</em>"?</h4>
+  </div>
+  <div flex="100" style="text-align: right;">
+    <md-button class="md-warn md-raised" ng-click="borrarProject(project.id, project.projectType)">Sí</md-button>
+    <md-button class="md-primary md-raised" ng-click="cancelarDelete()">Cancelar</md-button>
+  </div>
+</div>

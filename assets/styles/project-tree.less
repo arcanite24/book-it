@@ -1,0 +1,43 @@
+/* Project Tree - El tio Neri */
+@tree-color-blue: #29B6F6;
+@tree-color-orange: #FFA726;
+@tree-color-green: #66BB6A;
+@tree-color-red: #F44336;
+
+.tree-element {
+  padding: 1em;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.tree-project-name {
+  background-color: @tree-color-blue;
+}
+
+.tree-child1-orange {
+  background-color: @tree-color-orange;
+  margin-left: 1em;
+}
+.tree-child2-green {
+  background-color: @tree-color-green;
+  margin-left: 1em;
+}
+
+.tree-child2-red {
+  background-color: @tree-color-red;
+  margin-left: 1em;
+}
+
+//Separadores
+.tree-separator-orange {
+  border-right: 1px solid @tree-color-orange;
+}
+
+.tree-separator-green {
+  border-right: 1px solid @tree-color-green;
+}
+
+.tree-separator-red {
+  border-right: 1px solid @tree-color-red;
+}

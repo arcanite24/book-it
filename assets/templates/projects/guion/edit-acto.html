@@ -1,0 +1,15 @@
+<div layout="row" layout-align="center start" layout-padding layout-wrap ng-init="loadActo()">
+  <div flex="100" layout>
+    <h4>Editar acto</h4>
+    <span flex></span>
+    <md-button class="md-raised md-warn" ng-click="returnToGuionIndex(acto.guionRoot.id)">Regresar</md-button>
+    <md-button class="md-raised md-primary" ng-click="updateActo(acto)">Guardar</md-button>
+  </div>
+  <md-input-container flex="100">
+    <label>Nombre del acto</label>
+    <input ng-model="acto.name">
+  </md-input-container>
+  <div flex="100">
+    <textarea ckeditor="editorOptions" ng-model="acto.text"></textarea>
+  </div>
+</div>

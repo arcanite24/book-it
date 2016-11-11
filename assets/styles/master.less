@@ -191,6 +191,34 @@ md-sidenav, md-backdrop {
   width: 100%;
 }
 
+.main-loader {
+  height: 100vh;
+  background-color: #37474F;
+  z-index: 1000;
+  position: absolute;
+  
+  width: 100%;
+  display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.fade.ng-leave {
+  transition:2s linear all;
+  opacity:1;
+}
+.fade.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
 //Dashboard background
 .background-dashboard {
   height: 220px;
@@ -239,3 +267,8 @@ md-sidenav, md-backdrop {
   word-break: keep-all;
 }
 
+.puntitos-texto {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

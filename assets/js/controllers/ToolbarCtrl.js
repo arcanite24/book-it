@@ -1,15 +1,15 @@
-app.controller('ToolbarCtrl', function($scope, $state, $mdSidenav, $rootScope) {
+app.controller('ToolbarCtrl', function($scope, $state, $mdSidenav, $rootScope, $mdDialog) {
   
   $rootScope.$on('$stateChangeSuccess', function (event) {
-    if ($state.current.name != 'index') {
-      if (!$rootScope.logeado) {
-        $state.go('index');
-      }
-    }
+    console.log('State: ', $state.current.name);
   });
 
   $scope.abrirSidenav = function () {
     $mdSidenav('left').toggle();
+  }
+  
+  $rootScope.closeModal = function () {
+    $mdDialog.hide();
   }
 
   $rootScope.rootLogout = function () {

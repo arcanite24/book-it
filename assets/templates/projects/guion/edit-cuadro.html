@@ -1,0 +1,15 @@
+<div layout="row" layout-align="center start" layout-padding layout-wrap ng-init="loadCuadro()">
+  <div flex="100" layout>
+    <h4>Editar cuadro</h4>
+    <span flex></span>
+    <md-button class="md-raised md-warn" ng-click="returnToGuionIndex(scene.proyecto_id)" ng-disabled="!scene.proyecto_id">Regresar</md-button>
+    <md-button class="md-raised md-primary" ng-click="updateCuadro(scene)">Guardar</md-button>
+  </div>
+  <md-input-container flex="100">
+    <label>Nombre del cuadro</label>
+    <input ng-model="scene.name">
+  </md-input-container>
+  <div flex="100">
+    <textarea ckeditor="editorOptions" ng-model="scene.text"></textarea>
+  </div>
+</div>

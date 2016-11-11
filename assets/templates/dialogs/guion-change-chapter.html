@@ -1,0 +1,17 @@
+<div layout="row" layout-align="center start" layout-padding layout-wrap ng-init="loadNovela()">
+  <div flex="100">
+    <h4>Cambiar estado del proyecto</h4>
+  </div>
+  <md-input-container flex="100">
+    <md-select ng-model="novelaEstadoChange" placeholder="Selecciona un estado">
+      <md-option ng-value="'STATE_ACTIVO'">Activo</md-option>
+      <md-option ng-value="'STATE_FINALIZADO'">Finalizado</md-option>
+      <md-option ng-value="'STATE_PUBLICAR'">Por publicar</md-option>
+    </md-select>
+  </md-input-container>
+  <div flex="100" layout>
+    <span flex></span>
+    <md-button class="md-raised md-warn" ng-click="closeModal()">Cerrar</md-button>
+    <md-button class="md-raised md-primary" ng-click="changeGuionState(novelaEstadoChange)">Cambiar</md-button>
+  </div>
+</div>
