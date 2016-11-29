@@ -1,7 +1,7 @@
 app.controller('ToolbarCtrl', function($scope, $state, $mdSidenav, $rootScope, $mdDialog) {
   
   $rootScope.$on('$stateChangeSuccess', function (event) {
-    console.log('State: ', $state.current.name);
+    
   });
 
   $scope.abrirSidenav = function () {

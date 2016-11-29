@@ -1,5 +1,7 @@
 app.controller('UsersCtrl', function ($scope, $back, $help, $state, $rootScope, $sails) {
   
+  $rootScope.$state = $state;
+  
   //Manage users
   $scope.initManageUsers = function () {
     
@@ -14,14 +16,17 @@ app.controller('UsersCtrl', function ($scope, $back, $help, $state, $rootScope, 
     
   }
   
-  $scope.registerUser = function (data) {
+  $scope.registerUser = function (data, createWriter) {
+    
     if (data.password != data.repassword) {
       $help.toast('Las contraseñas no coinciden.');
       return;
     }
     $rootScope.rootLoader = true;
+    data.role = createWriter ? 'ROLE_EDITOR' : 'ROLE_ESCRITOR';
+    console.log('craeteWriter', createWriter, ' role: ', data.role);
     $back.addUser(data).then(function (userCreated) {
-      console.log(userCreated)
+      console.log(userCreated);
       $rootScope.rootLoader = false;
       if (!userCreated.err) {
         $help.toast('Usuario ' + userCreated.data.user.name + ' agregado.');

@@ -23,8 +23,10 @@ module.exports = {
 					borndate: params.borndate,
 					pregunta: params.pregunta,
 					respuesta: params.respuesta,
-					edad: params.edad
+					edad: params.edad,
+					role: params.role
 				};
+				console.log('Params: ', tempUser, params);
 				User.create(tempUser).then(function(data) {
 					console.log('INFO: Usuario creado - ', data.username);
 					return res.json({user: data, message: 'Usuario registrado correctamente.'});
@@ -76,7 +78,8 @@ module.exports = {
 				edad: datos.edad,
 				pregunta: datos.pregunta,
 				respuesta: datos.respuesta,
-				borndate: datos.borndate
+				borndate: datos.borndate,
+				role: datos.role
 			}).then(function (data) {
 				if (data && data.length > 0) {
 					return res.json({user: data[0]});
@@ -95,6 +98,13 @@ module.exports = {
 		var email = req.param('email');
 		var token = uuid.v4();
 		EmailService.sendRecoverTokenMail(email, token);
+	},
+	
+	testMail: function (req, res) {
+		for (var i = 0; i < 100; i++) {
+			EmailService.sendMail({});
+		}
+		return res.json({yey: 'yeye'});
 	}
 	
 };

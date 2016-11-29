@@ -40,6 +40,7 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
   $scope.loginUser = function (datos) {
     if (datos.username && datos.password) {
       $back.login(datos).success(function (data) {
+        console.log(data)
         if (data.err) {
           $mdToast.show($mdToast.simple().textContent("La contraseña o el nombre de usuario son incorrectas.").hideDelay(2000).parent(angular.element(document.body)));
         } else if (!data.token) {
@@ -54,6 +55,7 @@ app.controller('MainCtrl', function($scope, $state, $back, $help, $mdToast, $roo
           $state.go('dashboard');
         }
       }).error(function (err) {
+        console.log(err)
         $mdToast.show($mdToast.simple().textContent("Error con el servidor al iniciar sesión.").hideDelay(2000));
       });
     }

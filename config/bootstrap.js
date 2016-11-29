@@ -11,7 +11,18 @@
 
 module.exports.bootstrap = function(cb) {
 
-  // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+  User.findOrCreate({username: 'admin@admin.com'}, {
+    username: 'admin@admin.com',
+    password: '123',
+    borndate: '1990/10/10',
+    edad: 999,
+    pregunta: 'Porque el chino es tan chino',
+    respuesta: 'porque si',
+    role: 'ROLE_ADMIN',
+    name: 'Admin caguai'
+  }).then().catch(function (err) {
+    console.log(err)
+  });
+  
   cb();
 };
