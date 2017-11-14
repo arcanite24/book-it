@@ -20,17 +20,15 @@
  */
 
 module.exports.connections = {
-  
+
   localDiskDb: {
     adapter: 'sails-disk'
   },
-  
+
   mongoLab: {
     adapter: 'sails-mongo',
-    host: 'ds044229.mlab.com',
-    port: '44229',
-    user: 'admin',
-    password: 'admin',
+    host: '127.0.0.1',
+    port: '27017',
     database: 'book-it'
   }
 
